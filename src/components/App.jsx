@@ -1,5 +1,5 @@
 import css from './App.module.css';
-import { NavLink, Navigate, Route, Routes } from 'react-router-dom';
+import { NavLink, Route, Routes } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 import { Loader } from './Loader/Loader';
 
@@ -9,26 +9,26 @@ const MovieDetails = lazy(() => import('pages/MovieDetails/MovieDetails'));
 
 export const App = () => {
   return (
-    <Suspense fallback={<Loader />}>
-      <div className={css.container}>
-        <header className={css.header}>
-          <NavLink className={css.navLink} to="/">
-            Home
-          </NavLink>
-          <NavLink className={css.navLink} to="/movies">
-            Movies
-          </NavLink>
-        </header>
+    <div className={css.container}>
+      <header className={css.header}>
+        <NavLink className={css.navLink} to="/">
+          Home
+        </NavLink>
+        <NavLink className={css.navLink} to="/movies">
+          Movies
+        </NavLink>
+      </header>
+      <Suspense fallback={<Loader />}>
         <main>
           {' '}
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/movies" element={<Movies />} />
             <Route path="/movies/:movieId/*" element={<MovieDetails />} />
-            <Route path="*" element={<Navigate to="/" />} />
+            {/* <Route path="*" element={<Navigate to="/" />} /> */}
           </Routes>{' '}
         </main>
-      </div>
-    </Suspense>
+      </Suspense>
+    </div>
   );
 };
