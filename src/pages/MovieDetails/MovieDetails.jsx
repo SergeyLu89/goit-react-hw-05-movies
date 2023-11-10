@@ -43,7 +43,11 @@ const MovieDetails = () => {
         <h1 className={css.movieDetailsTitle}>{filmDetails.title}</h1>
         <img
           className={css.movieDetailsImg}
-          src={`https://image.tmdb.org/t/p/w500${filmDetails.poster_path}`}
+          src={
+            filmDetails.poster_path
+              ? `https://image.tmdb.org/t/p/w500${filmDetails.poster_path}`
+              : 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700'
+          }
           alt={filmDetails.title}
         />
         <h3 className={css.movieDetailsSlogan}>
