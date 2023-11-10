@@ -1,0 +1,27 @@
+.moviesList {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.movieListItem {
+  height: 268px;
+  border: 1px solid black;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: lightsteelblue;
+}
+.movieListItemLink {
+  display: block;
+}
+
+.movieListItemTitle {
+  width: 140px;
+  font-size: 18px;
+  padding: 2px 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-left: 4px;
+}

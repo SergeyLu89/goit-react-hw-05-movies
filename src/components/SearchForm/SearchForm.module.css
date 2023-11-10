@@ -1,0 +1,22 @@
+.form {
+  padding-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+.searchInput {
+  display: block;
+  width: 300px;
+  height: 25px;
+  border: 1px solid black;
+  border-radius: 6px;
+}
+.submitBtn {
+  padding: 2px 4px;
+  border: 1px solid black;
+  border-radius: 6px;
+  font-size: 20px;
+  color: black;
+  background-color: lightsteelblue;
+}

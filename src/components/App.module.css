@@ -1,0 +1,26 @@
+.navLink {
+  padding: 2px 4px;
+  border: 1px solid black;
+  border-radius: 6px;
+  font-size: 20px;
+  color: black;
+  background-color: lightsteelblue;
+}
+
+.header {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  color: lightsteelblue;
+}
+
+.container {
+  padding-left: 16px;
+  padding-right: 16px;
+  background-color: #111212;
+  padding-bottom: 16px;
+  min-height: 100vh;
+}
