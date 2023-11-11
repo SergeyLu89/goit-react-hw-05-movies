@@ -2,17 +2,17 @@ import React, { useEffect, useState } from 'react';
 import css from './Home.module.css';
 import { getTrending } from 'api/api';
 import MoviesList from 'components/MoviesList/MoviesList';
-// import { Loader } from 'components/Loader/Loader';
+import { Loader } from 'components/Loader/Loader';
 
 const Home = () => {
   const [movies, setMovies] = useState(null);
-  //   const [isLoading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   //   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fechMovies = async () => {
       try {
-        // setIsLoading(true);
+        setIsLoading(true);
         const data = await getTrending();
 
         setMovies(data);
@@ -20,7 +20,7 @@ const Home = () => {
         // setError(error.message);
         alert(`${error.message}`);
       } finally {
-        // setIsLoading(false);
+        setIsLoading(false);
       }
     };
     fechMovies();
@@ -29,7 +29,7 @@ const Home = () => {
   return (
     <div>
       <h1 className={css.homeTitle}>Trending today</h1>
-
+      {isLoading && <Loader />}
       {movies !== null && <MoviesList movies={movies} />}
     </div>
   );

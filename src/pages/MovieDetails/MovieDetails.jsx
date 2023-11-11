@@ -32,56 +32,57 @@ const MovieDetails = () => {
     };
     fechMoviesDetails();
   }, [movieId]);
-  return isLoading ? (
-    <Loader />
-  ) : (
-    filmDetails !== null && (
-      <div className={css.movieDetailsBlok}>
-        <Link className={css.movieDetailsLinkBack} to={backLonkRef.current}>
-          ◀ Back
-        </Link>{' '}
-        <h1 className={css.movieDetailsTitle}>{filmDetails.title}</h1>
-        <img
-          className={css.movieDetailsImg}
-          src={
-            filmDetails.poster_path
-              ? `https://image.tmdb.org/t/p/w500${filmDetails.poster_path}`
-              : 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700'
-          }
-          alt={filmDetails.title}
-        />
-        <h3 className={css.movieDetailsSlogan}>
-          Slogan: "{filmDetails.tagline}"
-        </h3>
-        <p className={css.movieDetailsDescr}>{filmDetails.overview}</p>
-        <ul className={css.movieDetailsList}>
-          <li className={css.movieDetailsListItem}>
-            Language: {filmDetails.original_language}
-          </li>
-          <li className={css.movieDetailsListItem}>
-            {' '}
-            Release date: {filmDetails.release_date}
-          </li>
-          <li className={css.movieDetailsListItem}>
-            Rating: {filmDetails.vote_average}
-          </li>
-        </ul>
-        <div className={css.movieDetailsLinkBox}>
-          <Link className={css.movieDetailsLink} to="cast">
-            Cast
-          </Link>
-          <Link className={css.movieDetailsLink} to="reviews">
-            Reviews
-          </Link>
+  return (
+    <div>
+      {isLoading && <Loader />}
+      {filmDetails !== null && (
+        <div className={css.movieDetailsBlok}>
+          <Link className={css.movieDetailsLinkBack} to={backLonkRef.current}>
+            ◀ Back
+          </Link>{' '}
+          <h1 className={css.movieDetailsTitle}>{filmDetails.title}</h1>
+          <img
+            className={css.movieDetailsImg}
+            src={
+              filmDetails.poster_path
+                ? `https://image.tmdb.org/t/p/w500${filmDetails.poster_path}`
+                : 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700'
+            }
+            alt={filmDetails.title}
+          />
+          <h3 className={css.movieDetailsSlogan}>
+            Slogan: "{filmDetails.tagline}"
+          </h3>
+          <p className={css.movieDetailsDescr}>{filmDetails.overview}</p>
+          <ul className={css.movieDetailsList}>
+            <li className={css.movieDetailsListItem}>
+              Language: {filmDetails.original_language}
+            </li>
+            <li className={css.movieDetailsListItem}>
+              {' '}
+              Release date: {filmDetails.release_date}
+            </li>
+            <li className={css.movieDetailsListItem}>
+              Rating: {filmDetails.vote_average}
+            </li>
+          </ul>
+          <div className={css.movieDetailsLinkBox}>
+            <Link className={css.movieDetailsLink} to="cast">
+              Cast
+            </Link>
+            <Link className={css.movieDetailsLink} to="reviews">
+              Reviews
+            </Link>
+          </div>
+          <div>
+            <Routes>
+              <Route path="cast" element={<Cast />} />
+              <Route path="reviews" element={<Reviews />} />
+            </Routes>
+          </div>
         </div>
-        <div>
-          <Routes>
-            <Route path="cast" element={<Cast />} />
-            <Route path="reviews" element={<Reviews />} />
-          </Routes>
-        </div>
-      </div>
-    )
+      )}
+    </div>
   );
 };
 

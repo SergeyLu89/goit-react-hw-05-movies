@@ -29,21 +29,22 @@ const Reviews = () => {
     };
     fechMoviesReview();
   }, [movieId]);
-  return isLoading ? (
-    <Loader />
-  ) : (
-    <ul className={css.reviewsList}>
+  return (
+    <div>
+      {isLoading && <Loader />}
       {filmReview !== null && filmReview.length !== 0 ? (
-        filmReview.map(({ author, content, id }) => (
-          <li key={id} className={css.reviewsListItem}>
-            <h4 className={css.reviewsListItemSubtitle}>{author}</h4>
-            <p>{content}</p>
-          </li>
-        ))
+        <ul className={css.reviewsList}>
+          {filmReview.map(({ author, content, id }) => (
+            <li key={id} className={css.reviewsListItem}>
+              <h4 className={css.reviewsListItemSubtitle}>{author}</h4>
+              <p>{content}</p>
+            </li>
+          ))}
+        </ul>
       ) : (
         <p>We dont have any reviews for this movie.</p>
       )}
-    </ul>
+    </div>
   );
 };
 

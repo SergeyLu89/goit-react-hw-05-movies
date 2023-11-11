@@ -28,28 +28,32 @@ const Cast = () => {
     };
     fechMoviesCast();
   }, [movieId]);
-  return isLoading ? (
-    <Loader />
-  ) : (
-    <ul className={css.castList}>
-      {filmCast !== null &&
-        filmCast.map(({ id, name, character, profile_path }) => (
-          <li key={id} className={css.castListItem}>
-            <img
-              src={
-                profile_path
-                  ? `https://image.tmdb.org/t/p/w500${profile_path}`
-                  : 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700'
-              }
-              alt="poster"
-              width="120"
-            />
+  return (
+    <div>
+      {isLoading && <Loader />}
+      {filmCast !== null && (
+        <ul className={css.castList}>
+          {filmCast.map(({ id, name, character, profile_path }) => (
+            <li key={id} className={css.castListItem}>
+              <li key={id} className={css.castListItem}>
+                <img
+                  src={
+                    profile_path
+                      ? `https://image.tmdb.org/t/p/w500${profile_path}`
+                      : 'https://ireland.apollo.olxcdn.com/v1/files/0iq0gb9ppip8-UA/image;s=1000x700'
+                  }
+                  alt="poster"
+                  width="120"
+                />
 
-            <h4 className={css.castListSubtitle}>{name}</h4>
-            <p className={css.castListDescr}>{character}</p>
-          </li>
-        ))}
-    </ul>
+                <h4 className={css.castListSubtitle}>{name}</h4>
+                <p className={css.castListDescr}>{character}</p>
+              </li>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 };
 
